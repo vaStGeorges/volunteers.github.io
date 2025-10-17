@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Church Breakfast Volunteer Roles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A tabbed/card-based single-page application. The user sees four clear role cards at the top. Clicking a card reveals the detailed responsibilities for that role below, hiding the others. This structure was chosen because it cleanly separates the distinct information categories (the roles), preventing information overload and allowing for focused, user-driven exploration, which is more intuitive than scrolling a static document. -->
+    <!-- Visualization & Content Choices: Report Info: Four distinct volunteer roles with descriptions and responsibilities. -> Goal: Organize & Inform. -> Presentation Method: Interactive cards/tabs for navigation and styled text blocks with Unicode icons for the detailed content. -> Interaction: Click-to-reveal content panels for each role. -> Justification: This UI pattern is ideal for presenting distinct categories of textual information clearly and interactively without needing complex visualizations. -> Library/Method: Vanilla JS for interactivity, Tailwind CSS for styling. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .role-card {
+            transition: all 0.3s ease-in-out;
+        }
+        .role-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        .role-content.active {
+            display: block;
+        }
+        .role-card.active {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-amber-50 text-slate-800 antialiased">
+
+    <div class="container mx-auto px-4 py-8 md:py-12">
+        <header class="text-center mb-8 md:mb-12">
+            <h1 class="text-3xl md:text-4xl font-bold text-amber-900">Church Breakfast Program</h1>
+            <p class="mt-2 text-lg text-slate-600">Volunteer Role Descriptions</p>
+        </header>
+
+        <div class="max-w-4xl mx-auto">
+            <p class="text-center text-slate-700 mb-8">
+                Welcome, valued volunteer! This guide is designed to provide a clear and interactive overview of the essential roles that make our breakfast program a success. Please select a role below to view its specific responsibilities. Your dedication helps create a warm and welcoming experience for everyone.
+            </p>
+
+            <nav id="role-nav" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <button data-role="1" class="role-card active text-left p-4 bg-white border-2 border-amber-400 rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    <span class="block text-sm font-semibold text-amber-700">Role 1</span>
+                    <span class="block text-lg font-bold text-slate-900">Kitchen Team</span>
+                </button>
+                <button data-role="2" class="role-card text-left p-4 bg-white border-2 border-transparent rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    <span class="block text-sm font-semibold text-amber-700">Role 2</span>
+                    <span class="block text-lg font-bold text-slate-900">Floor Supervisor</span>
+                </button>
+                <button data-role="3" class="role-card text-left p-4 bg-white border-2 border-transparent rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    <span class="block text-sm font-semibold text-amber-700">Role 3</span>
+                    <span class="block text-lg font-bold text-slate-900">Service Team</span>
+                </button>
+                <button data-role="4" class="role-card text-left p-4 bg-white border-2 border-transparent rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    <span class="block text-sm font-semibold text-amber-700">Role 4</span>
+                    <span class="block text-lg font-bold text-slate-900">Transition Team</span>
+                </button>
+            </nav>
+
+            <main id="role-details" class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                <div id="role-content-1" class="role-content active">
+                    <h2 class="text-2xl font-bold text-amber-900 mb-2">Role 1: Breakfast Prep & Beverage Lead (The Kitchen Team)</h2>
+                    <p class="text-slate-600 mb-6">This role focuses on preparation, staging, and managing all beverages and food staging prior to service, ensuring everything is ready for the servers.</p>
+                    <h3 class="font-bold text-slate-800 mb-4">Key Responsibilities:</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">☕</span><span><strong>Beverage Management:</strong> Brew and manage large quantities of hot tea (for children) and hot tea and coffee (for adults).</span></li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">🌡️</span><span><strong>Temperature Control:</strong> Ensure the children’s tea is brewed to a safe, lukewarm temperature or pre-cooled for immediate consumption to prevent any accidental burns.</span></li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">🤝</span><span><strong>Clergy Coordination:</strong> Coordinate with the clergy food preparers to receive the pre-cut bread and stage it at the designated serving stations.</span></li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">📦</span><span><strong>Supply Staging:</strong> Set up all necessary serving supplies (e.g., creamers, sugar, spoons, napkins, trays) near the respective serving areas for both children and adults.</span></li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">🔄</span><span><strong>Replenishment:</strong> Monitor tea and coffee levels during service and quickly brew/prepare refills as needed.</span></li>
+                    </ul>
+                </div>
+                <div id="role-content-2" class="role-content">
+                    <h2 class="text-2xl font-bold text-amber-900 mb-2">Role 2: Children’s Seating & Safety Guide (The Floor Supervisor)</h2>
+                    <p class="text-slate-600 mb-6">This role focuses on managing the flow of children, maintaining a safe environment, and ensuring kids are seated quickly and orderly.</p>
+                    <h3 class="font-bold text-slate-800 mb-4">Key Responsibilities:</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">👋</span><span><strong>Greeting & Seating:</strong> Greet children as they arrive in the dining area and guide them efficiently to their seats at the tables.</span></li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">👨‍👩‍👧‍👦</span><span><strong>Crowd Control:</strong> Maintain order around the tables before and during the meal, ensuring children remain seated until dismissed.</span></li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">👀</span><span><strong>Supervision:</strong> Actively supervise the children while they eat, watching for any safety issues (spills, conflicts, or choking hazards).</span></li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">🙋</span><span><strong>Needs Assistance:</strong> Be the first point of contact for children who need help (e.g., retrieving dropped food, needing a napkin, or assistance with seating).</span></li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">➡️</span><span><strong>Flow Coordination:</strong> Coordinate with the Service Team (Role 3) to ensure only seated children are served.</span></li>
+                    </ul>
+                </div>
+                <div id="role-content-3" class="role-content">
+                    <h2 class="text-2xl font-bold text-amber-900 mb-2">Role 3: Children’s Meal Server & Communicator (The Service Team)</h2>
+                    <p class="text-slate-600 mb-6">This role provides direct meal service and handles all necessary verbal communication and announcements via the microphone.</p>
+                    <h3 class="font-bold text-slate-800 mb-4">Key Responsibilities:</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">🥤</span><span><strong>Setup:</strong> Place disposable cups at each spot on the children’s tables immediately before children are seated.</span></li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">🍞</span><span><strong>Service:</strong> Distribute pre-cut bread to the seated children.</span></li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">💧</span><span><strong>Pouring:</strong> Pour the pre-prepared, safe-temperature tea into the children's cups.</span></li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">🎤</span><span><strong>Mic Communication (Pre-Meal):</strong> Briefly and clearly announce the serving process and general rules (e.g., "Stay seated until you finish breakfast").</span></li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">📢</span><span><strong>Mic Communication (Dismissal):</strong> Operate the microphone to clearly announce when children are dismissed to their classes or next activities once they are finished eating.</span></li>
+                    </ul>
+                </div>
+                <div id="role-content-4" class="role-content">
+                    <h2 class="text-2xl font-bold text-amber-900 mb-2">Role 4: Adult Service & Transition Coordinator (The Transition Team)</h2>
+                    <p class="text-slate-600 mb-6">This role manages the swift cleanup of the children’s dining area and the subsequent setup and service for the adults.</p>
+                    <h3 class="font-bold text-slate-800 mb-4">Key Responsibilities:</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">🗑️</span><span><strong>Table Clearing:</strong> Immediately after the children have been dismissed, clear all remaining cups, napkins, and debris from the children’s tables.</span></li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">✨</span><span><strong>Venue Transition:</strong> Fold and stack the children’s dining tables and chairs, or relocate them to the designated storage area/adult setup area, ensuring the space is ready for the adults.</span></li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">🛠️</span><span><strong>Adult Setup:</strong> Set up and staff the designated adult serving station with coffee, tea, bread, and any accompanying items.</span></li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">🧑‍🍳</span><span><strong>Adult Service:</strong> Serve bread, tea, and coffee to the arriving adults in a friendly and efficient manner.</span></li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">🧹</span><span><strong>Post-Meal Cleanup:</strong> Assist the Kitchen Team (Role 1) with the final wiping down of adult serving counters and general area tidy-up.</span></li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const roleNav = document.getElementById('role-nav');
+            const roleCards = roleNav.querySelectorAll('.role-card');
+            const roleContents = document.getElementById('role-details').querySelectorAll('.role-content');
+
+            roleNav.addEventListener('click', (event) => {
+                const card = event.target.closest('.role-card');
+                if (!card) return;
+
+                const roleId = card.dataset.role;
+                
+                roleCards.forEach(c => {
+                    c.classList.remove('active', 'border-amber-400');
+                    c.classList.add('border-transparent');
+                });
+                
+                card.classList.add('active', 'border-amber-400');
+                card.classList.remove('border-transparent');
+
+                roleContents.forEach(content => {
+                    if (content.id === `role-content-${roleId}`) {
+                        content.classList.add('active');
+                    } else {
+                        content.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
