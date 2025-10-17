@@ -6,8 +6,8 @@
     <title>Church Breakfast Volunteer Roles</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chosen Palette: Warm Neutrals -->
-    <!-- Application Structure Plan: A tabbed/card-based single-page application. The user sees four clear role cards at the top. Clicking a card reveals the detailed responsibilities for that role below, hiding the others. This structure was chosen because it cleanly separates the distinct information categories (the roles), preventing information overload and allowing for focused, user-driven exploration, which is more intuitive than scrolling a static document. -->
-    <!-- Visualization & Content Choices: Report Info: Four distinct volunteer roles with descriptions and responsibilities. -> Goal: Organize & Inform. -> Presentation Method: Interactive cards/tabs for navigation and styled text blocks with Unicode icons for the detailed content. -> Interaction: Click-to-reveal content panels for each role. -> Justification: This UI pattern is ideal for presenting distinct categories of textual information clearly and interactively without needing complex visualizations. -> Library/Method: Vanilla JS for interactivity, Tailwind CSS for styling. -->
+    <!-- Application Structure Plan: A tabbed/card-based single-page application. The user sees five clear role cards at the top. Clicking a card reveals the detailed responsibilities for that role below, hiding the others. This structure was chosen because it cleanly separates the distinct information categories (the roles), preventing information overload and allowing for focused, user-driven exploration, which is more intuitive than scrolling a static document. -->
+    <!-- Visualization & Content Choices: Report Info: Five distinct volunteer roles with descriptions and responsibilities, plus general program rules. -> Goal: Organize & Inform. -> Presentation Method: Interactive cards/tabs for navigation, styled text blocks for role content, and a dedicated, highlighted list for the general rules. -> Interaction: Click-to-reveal content panels for each role. -> Justification: This UI pattern is ideal for presenting distinct categories of textual information clearly and interactively without needing complex visualizations. -> Library/Method: Vanilla JS for interactivity, Tailwind CSS for styling. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
@@ -15,6 +15,7 @@
         }
         .role-card {
             transition: all 0.3s ease-in-out;
+            min-height: 85px;
         }
         .role-content {
             display: none;
@@ -44,15 +45,15 @@
             <p class="mt-2 text-lg text-slate-600">Volunteer Role Descriptions</p>
         </header>
 
-        <div class="max-w-4xl mx-auto">
+        <div class="max-w-6xl mx-auto">
             <p class="text-center text-slate-700 mb-8">
                 Welcome, valued volunteer! This guide is designed to provide a clear and interactive overview of the essential roles that make our breakfast program a success. Please select a role below to view its specific responsibilities. Your dedication helps create a warm and welcoming experience for everyone.
             </p>
 
-            <nav id="role-nav" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <nav id="role-nav" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
                 <button data-role="1" class="role-card active text-left p-4 bg-white border-2 border-amber-400 rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
                     <span class="block text-sm font-semibold text-amber-700">Role 1</span>
-                    <span class="block text-lg font-bold text-slate-900">Coffee/Tea Station Team</span>
+                    <span class="block text-lg font-bold text-slate-900">Kitchen Team</span>
                 </button>
                 <button data-role="2" class="role-card text-left p-4 bg-white border-2 border-transparent rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
                     <span class="block text-sm font-semibold text-amber-700">Role 2</span>
@@ -66,15 +67,19 @@
                     <span class="block text-sm font-semibold text-amber-700">Role 4</span>
                     <span class="block text-lg font-bold text-slate-900">Transition Team</span>
                 </button>
+                <button data-role="5" class="role-card text-left p-4 bg-white border-2 border-transparent rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    <span class="block text-sm font-semibold text-amber-700">Role 5</span>
+                    <span class="block text-lg font-bold text-slate-900">Volunteer Coordinator</span>
+                </button>
             </nav>
 
-            <main id="role-details" class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+            <main id="role-details" class="bg-white p-6 md:p-8 rounded-xl shadow-lg mb-10">
                 <div id="role-content-1" class="role-content active">
-                    <h2 class="text-2xl font-bold text-amber-900 mb-2">Role 1: Breakfast Prep & Beverage Lead (2 Volunteers)</h2>
+                    <h2 class="text-2xl font-bold text-amber-900 mb-2">Role 1: Breakfast Prep & Beverage Lead (The Kitchen Team)</h2>
                     <p class="text-slate-600 mb-6">This role focuses on preparation, staging, and managing all beverages and food staging prior to service, ensuring everything is ready for the servers.</p>
                     <h3 class="font-bold text-slate-800 mb-4">Key Responsibilities:</h3>
                     <ul class="space-y-3">
-                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">☕</span><span><strong>Beverage Management:</strong> Manage large quantities of hot tea (for children) and hot tea and coffee (for adults).</span></li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">☕</span><span><strong>Beverage Management:</strong> Brew and manage large quantities of hot tea (for children) and hot tea and coffee (for adults).</span></li>
                         <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">🌡️</span><span><strong>Temperature Control:</strong> Ensure the children’s tea is brewed to a safe, lukewarm temperature or pre-cooled for immediate consumption to prevent any accidental burns.</span></li>
                         <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">🤝</span><span><strong>Clergy Coordination:</strong> Coordinate with the clergy food preparers to receive the pre-cut bread and stage it at the designated serving stations.</span></li>
                         <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">📦</span><span><strong>Supply Staging:</strong> Set up all necessary serving supplies (e.g., creamers, sugar, spoons, napkins, trays) near the respective serving areas for both children and adults.</span></li>
@@ -117,7 +122,52 @@
                         <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">🧹</span><span><strong>Post-Meal Cleanup:</strong> Assist the Kitchen Team (Role 1) with the final wiping down of adult serving counters and general area tidy-up.</span></li>
                     </ul>
                 </div>
+                 <div id="role-content-5" class="role-content">
+                    <h2 class="text-2xl font-bold text-amber-900 mb-2">Role 5: Volunteer Coordinator</h2>
+                    <p class="text-slate-600 mb-6">This key administrative role manages the recruitment and preparedness of youth helpers, ensuring a strong and well-informed team is ready to serve the children.</p>
+                    <h3 class="font-bold text-slate-800 mb-4">Key Responsibilities:</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">📝</span><span><strong>Youth Sign-ups:</strong> Initiate and manage the sign-up process for youth helpers to serve breakfast for the younger children.</span></li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">📚</span><span><strong>Volunteer Orientation:</strong> Conduct a mandatory orientation session for all registered youth volunteers to review safety rules, serving expectations, and role responsibilities before their first shift.</span></li>
+                        <li class="flex items-start"><span class="text-amber-600 mr-3 mt-1">🗓️</span><span><strong>Scheduling Support:</strong> Assist in creating a consistent schedule that aligns youth helper availability with the breakfast service needs.</span></li>
+                    </ul>
+                </div>
             </main>
+
+            <!-- GENERAL PROGRAM RULES -->
+            <div id="rules-section" class="mb-10 bg-amber-100 border-l-4 border-amber-600 p-6 rounded-lg shadow-inner">
+                <h2 class="text-2xl font-extrabold text-amber-900 mb-4 flex items-center">
+                    <span class="text-3xl mr-3">🔔</span> Breakfast Time Rules
+                </h2>
+                <ul class="space-y-3 list-disc list-inside text-slate-700">
+                    <li>Walk quietly from the church to the fellowship hall.</li>
+                    <li>Put your **shoes on** when you enter the hall.</li>
+                    <li>Wait patiently until you are served your bread and tea.</li>
+                    <li>Be respectful to those who serve you, remember to say **“please” and “thank you.”**</li>
+                    <li>Do **not** line up to get tea or sugar. Volunteers will serve you.</li>
+                    <li>Once you receive your tea and bread, do not go back for more; think about others who haven't been served yet.</li>
+                    <li>Remember, you are in God’s house. Show **love and respect** to everyone.</li>
+                    <li>Use kind words, no offensive or hurtful language.</li>
+                    <li>Keep an open heart and mind. Make new friends and include others, even those you don’t know well.</li>
+                </ul>
+            </div>
+            <!-- END GENERAL PROGRAM RULES -->
+
+            <!-- NEW: FELLOWSHIP HALL GUIDELINES FOR YOUNG VOLUNTEERS -->
+            <div id="youth-guidelines-section" class="mb-10 bg-amber-100 border-l-4 border-amber-600 p-6 rounded-lg shadow-inner">
+                <h2 class="text-2xl font-extrabold text-amber-900 mb-4 flex items-center">
+                    <span class="text-3xl mr-3">🧑‍🤝‍🧑</span> Fellowship Hall Guidelines
+                </h2>
+                <p class="mb-4 text-slate-700 font-medium">These rules are specifically for our **young volunteers** and all children to ensure safety and order in the Fellowship Hall before, during, and after service.</p>
+                <ul class="space-y-3 list-disc list-inside text-slate-700">
+                    <li>Only **assigned volunteers** should go to the fellowship hall after finishing mezmur and Bible reading, if assigned that day.</li>
+                    <li>Any kids who come to the fellowship hall **before church service ends** must be accompanied by a parent.</li>
+                    <li>No one is allowed in the fellowship hall **before prayer service ends**.</li>
+                    <li>Only **adult volunteers** are allowed at the coffee and refreshment tables.</li>
+                </ul>
+            </div>
+            <!-- END NEW SECTION -->
+
         </div>
     </div>
 
